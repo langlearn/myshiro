@@ -18,7 +18,7 @@ public class LoginLogoutTest {
 
     @Test
     public void testHelloworld(){
-        Factory<org.apache.shiro.mgt.SecurityManager> factory=new IniSecurityManagerFactory("classpath:shiro.ini");
+        Factory<org.apache.shiro.mgt.SecurityManager> factory=new IniSecurityManagerFactory("classpath:shiro-realm.ini");
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
         Subject subject=SecurityUtils.getSubject();
@@ -26,7 +26,7 @@ public class LoginLogoutTest {
         try {
             subject.login(token);
         }catch (AuthenticationException e){
-
+            e.printStackTrace();
         }
 
         Assert.assertTrue(subject.isAuthenticated());
