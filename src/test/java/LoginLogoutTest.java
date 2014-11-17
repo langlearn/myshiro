@@ -18,11 +18,11 @@ public class LoginLogoutTest {
 
     @Test
     public void testHelloworld(){
-        Factory<org.apache.shiro.mgt.SecurityManager> factory=new IniSecurityManagerFactory("classpath:shiro-multi-realm.ini");
+        Factory<org.apache.shiro.mgt.SecurityManager> factory=new IniSecurityManagerFactory("classpath:shiro-jdbc-realm.ini");
         SecurityManager securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
         Subject subject=SecurityUtils.getSubject();
-        UsernamePasswordToken token=new UsernamePasswordToken("wang","123");
+        UsernamePasswordToken token=new UsernamePasswordToken("zhang","123");
         try {
             subject.login(token);
         }catch (AuthenticationException e){
